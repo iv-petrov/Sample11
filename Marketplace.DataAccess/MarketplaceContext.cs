@@ -18,11 +18,12 @@ public class MarketplaceContext : DbContext
     /// </summary>
     public MarketplaceContext(DbContextOptions options): base(options)
     {
-
+        Database.EnsureCreated();
     }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Product>().HasKey(p => p.Id);
         /*
 CREATE TABLE public."Products"
 (
@@ -35,5 +36,6 @@ CREATE TABLE public."Products"
 	"UpdatedAt" TIMESTAMP WITHOUT TIME ZONE  NOT NULL
 )
          */
+        base.OnModelCreating(modelBuilder);
     }
 }

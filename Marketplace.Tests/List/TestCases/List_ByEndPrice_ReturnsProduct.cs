@@ -34,8 +34,10 @@ List. Передана конечная цена 10. В БД есть товар
         var now = DateTimeOffset.UtcNow.Truncate();
         var product1 = CreateProductRequestGenerator.Get(TestId);
         product1.Price = 9;
+        product1.Name = "Продукт ценой 9";
         var product2 = CreateProductRequestGenerator.Get(TestId);
         product2.Price = 11;
+        product2.Name = "Продукт ценой 11";
         return new ListProductTestCase
         {
             TestId = TestId,

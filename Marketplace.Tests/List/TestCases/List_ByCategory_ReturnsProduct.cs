@@ -35,10 +35,13 @@ List. Передана категория товара Children. В БД ест�
         var now = DateTimeOffset.UtcNow.Truncate();
         var product1 = CreateProductRequestGenerator.Get(TestId);
         product1.Category = "Children";
+        product1.Name = "Продукт категории Children";
         var product2 = CreateProductRequestGenerator.Get(TestId);
         product2.Category = "Women";
+        product2.Name = "Продукт категории Women";
         var product3 = CreateProductRequestGenerator.Get(TestId);
         product3.Category = "Women";
+        product3.Name = "Продукт категории Women";
         return new ListProductTestCase
         {
             TestId = TestId,

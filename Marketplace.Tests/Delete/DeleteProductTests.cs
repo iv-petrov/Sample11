@@ -39,6 +39,7 @@ public class DeleteProductTests : IClassFixture<WebApplicationFactory<Program>>
 
         // ASSERT
         var actualProduct = await productsApiClient.GetAsync(product.Id, CancellationToken.None);
+        _outputHelper.WriteLine($"Продукт {product.Id} удалён");
         actualProduct.Should().BeNull();
     }
 
@@ -61,5 +62,6 @@ public class DeleteProductTests : IClassFixture<WebApplicationFactory<Program>>
         // ASSERT
         error.Which.Code.Should().Be(testCase.Expectations.HttpStatusCode);
         error.Which.Message.Should().Be(testCase.Expectations.Error);
+        _outputHelper.WriteLine($"Ошибка <{testCase.Expectations.Error}>");
     }
 }

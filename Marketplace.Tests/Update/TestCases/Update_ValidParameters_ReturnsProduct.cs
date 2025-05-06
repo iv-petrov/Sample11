@@ -34,7 +34,7 @@ Update. Переданы корректные данные. Обновляет �
         var product = new CreateProductRequest
         {
             Article = Guid.NewGuid().ToString(),
-            Name = "Name",
+            Name = "Нормальный продукт",
             Price = 10000,
             Category = "Children"
         };

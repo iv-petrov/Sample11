@@ -49,6 +49,7 @@ public class UpdateProductTests : IClassFixture<WebApplicationFactory<Program>>
         // ASSERT
         var actualProduct = await productsApiClient.GetAsync(testCase.Parameters.UpdateRequest.Id, CancellationToken.None);
         actualProduct.Should().BeEquivalentTo(testCase.Expectations.Product, options => options.Excluding(dto => dto.Id));
+        _outputHelper.WriteLine($"Продукт <{product.Name}> обновлён");
     }
 
     [Theory]
@@ -70,6 +71,7 @@ public class UpdateProductTests : IClassFixture<WebApplicationFactory<Program>>
         // ASSERT
         error.Which.Code.Should().Be(testCase.Expectations.HttpStatusCode);
         error.Which.Message.Should().Be(testCase.Expectations.Error);
+        _outputHelper.WriteLine($"Ошибка <{testCase.Expectations.Error}>");
     }
 
     /// <summary>

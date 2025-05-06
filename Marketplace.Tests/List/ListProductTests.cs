@@ -49,6 +49,7 @@ public class ListProductTests : IClassFixture<WebApplicationFactory<Program>>
         // ASSERT
         foreach ( var product in testCase.Expectations.IncludedProducts)
         {
+            _outputHelper.WriteLine($"{product.Name}");
             actualProducts.Should().ContainEquivalentOf(product, options => options.Excluding(dto => dto.Id));
         }
 

@@ -42,6 +42,7 @@ public class GetProductTests : IClassFixture<WebApplicationFactory<Program>>
 
         // ACT
         var actualProduct = await productsApiClient.GetAsync(product.Id, CancellationToken.None);
+        _outputHelper.WriteLine($"Продукт <{actualProduct?.Id}>");
 
         // ASSERT
         actualProduct.Should().BeEquivalentTo(testCase.Expectations.Product, options => options.Excluding(dto => dto.Id));
@@ -59,6 +60,7 @@ public class GetProductTests : IClassFixture<WebApplicationFactory<Program>>
 
         // ACT
         var product = await productsApiClient.GetAsync(testCase.Parameters.ProductId, CancellationToken.None);
+        _outputHelper.WriteLine($"Продукт <{product?.Id}>");
 
         // ASSERT
         product.Should().BeNull();
